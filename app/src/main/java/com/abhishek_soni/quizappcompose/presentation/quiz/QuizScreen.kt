@@ -1,5 +1,6 @@
 package com.abhishek_soni.quizappcompose.presentation.quiz
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -24,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,20 +40,21 @@ import com.abhishek_soni.quizappcompose.presentation.util.Constants
 import com.abhishek_soni.quizappcompose.presentation.util.Dimens
 import kotlinx.coroutines.launch
 
-//@Preview
-//@Composable
-//private fun QuizScreenPreview() {
-//
-//    QuizScreen(
-//        numofQuiz = 10,
-//        quizCategory = "General Knowledge",
-//        quizDifficulty = "Medium",
-//        quizType = "Multiple Choice",
-//        event = {},
-//        state = StateQuizScreen(),
-//
-//    )
-//}
+@Preview
+@Composable
+private fun QuizScreenPreview() {
+
+    QuizScreen(
+        numofQuiz = 10,
+        quizCategory = "General Knowledge",
+        quizDifficulty = "Medium",
+        quizType = "Multiple Choice",
+        event = {},
+        state = StateQuizScreen(),
+        navController = NavController(LocalContext.current)
+
+    )
+}
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -64,6 +67,13 @@ fun QuizScreen(modifier: Modifier = Modifier,
                state: StateQuizScreen,
                navController : NavController
                ) {
+    BackHandler {
+        navController.navigate(Routes.HomeScreen.route) {
+            popUpTo(Routes.HomeScreen.route) {
+                inclusive = true
+            }
+        }
+    }
 
     LaunchedEffect(key1 = Unit) {
         val difficulty = when (quizDifficulty) {
@@ -78,7 +88,13 @@ fun QuizScreen(modifier: Modifier = Modifier,
         event(EventQuizScreen.GetQuizzes(numofQuiz, Constants.categoriesMap[quizCategory]!!, difficulty, type))
     }
     Column(modifier = Modifier.fillMaxSize()) {
-        QuizAppBar(quizCategory = quizCategory){}
+        QuizAppBar(quizCategory = quizCategory){
+            navController.navigate(Routes.HomeScreen.route){
+                popUpTo(Routes.HomeScreen.route){
+                    inclusive = true
+                }
+            }
+        }
 
 
     Column(
@@ -105,7 +121,7 @@ fun QuizScreen(modifier: Modifier = Modifier,
                 .background(colorResource(id = R.color.blue_grey))
         )
         Spacer(modifier = Modifier.height(Dimens.LargeSpaceHeight))
-
+//quizFetched(state)
         if (quizFetched(state)){
 
             val pagerState = rememberPagerState() { state.quizState.size }
@@ -169,7 +185,7 @@ fun QuizScreen(modifier: Modifier = Modifier,
                     text = buttonText[1],
                     padding = Dimens.SmallPadding,
                     borderColor = colorResource(id = R.color.orange),
-                    containerColor = if (pagerState.currentPage==state.quizState.size -1)colorResource(id = R.color.orange)else colorResource(id = R.color.dark_slate_blue),
+                    containerColor = if (pagerState.currentPage==state.quizState.size -1){colorResource(id = R.color.orange)}else {colorResource(id = R.color.dark_slate_blue)},
                     fraction = 1f,
                     textColor = colorResource(id = R.color.white),
                     fontSize = Dimens.SmallTextSize,
@@ -199,7 +215,7 @@ fun quizFetched(state: StateQuizScreen): Boolean {
             false
         }
 
-        state.quizState?.isNotEmpty() == true -> {
+        state.quizState.isNotEmpty() == true -> {
             true
         }
         else -> {

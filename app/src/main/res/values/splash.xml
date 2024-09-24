@@ -2,7 +2,7 @@
 <resources>
     <style name="App.Starting.Theme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/splash</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/quiz__1_</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/quiz__3_</item>
         <item name="postSplashScreenTheme">@style/Theme.QuizAppCompose</item>
     </style>
 </resources>

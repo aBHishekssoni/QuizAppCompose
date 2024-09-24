@@ -72,7 +72,8 @@ fun AppDropDownMenu(
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
                 },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-//                  textColor = colorResource(id = R.color.blue_grey),
+                  unfocusedTextColor = colorResource(id = R.color.blue_grey),
+                    focusedTextColor = colorResource(id = R.color.blue_grey),
                     unfocusedTrailingIconColor = colorResource(id = R.color.orange),
                     focusedTrailingIconColor = colorResource(id = R.color.orange),
                     focusedBorderColor = colorResource(id = R.color.dark_slate_blue),

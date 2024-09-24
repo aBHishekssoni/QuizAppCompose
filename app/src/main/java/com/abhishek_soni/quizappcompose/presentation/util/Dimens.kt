@@ -24,7 +24,7 @@ object Dimens {
     val MediumCornerRadous = 30.dp
     val MidiumBoxHeight = 60.dp
     val SmallCircleShape = 90.dp
-    val smallShapewidth = 8.dp
-    val LargeLottieAnimSize = 108.dp
+    val SmallShapewidth = 8.dp
+    val LargeLottieAnimSize = 110.dp
 
 }

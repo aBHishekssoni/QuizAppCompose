@@ -55,7 +55,7 @@ fun QuizInterface(modifier: Modifier = Modifier,
 
                 )
                 Text(
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier.weight(9f),
                     text = question,
                     color = colorResource(id = R.color.blue_grey),
                     fontSize = Dimens.SmallTextSize

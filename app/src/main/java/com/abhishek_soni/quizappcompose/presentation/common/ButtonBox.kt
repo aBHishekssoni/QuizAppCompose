@@ -43,12 +43,11 @@ fun ButtonBox(modifier: Modifier = Modifier,
               text: String,
               padding: Dp,
               borderColor: Color = colorResource(id = R.color.blue_grey),
-              containerColor: Color = colorResource(id = R.color.blue_grey),
+              containerColor: Color = colorResource(id = R.color.mid_night_blue),
               textColor: Color = colorResource(id = R.color.black),
               fontSize: TextUnit = MediumTextSize,
               fraction: Float = 1f,
               onClick:() -> Unit,
-//              onButtonClick: () -> Unit
 ) {
     Box (
         modifier = Modifier
@@ -59,9 +58,10 @@ fun ButtonBox(modifier: Modifier = Modifier,
             .height(Dimens.MidiumBoxHeight)
             .clip(RoundedCornerShape(Dimens.LargeCornerRadius))
             .background(colorResource(id = R.color.blue_grey)),
+
         contentAlignment = Alignment.Center
     ){
-        Text(text = text, fontSize = Dimens.MediumTextSize,
+        Text(text = text, fontSize = fontSize,
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold), color = textColor)
 
     }

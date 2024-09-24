@@ -50,7 +50,7 @@ import com.abhishek_soni.quizappcompose.presentation.util.Dimens.SmallSpaceHeigh
 @Composable
 private fun QuizOptionPreview() {
     QuizOption(
-        optionNumber = "A",
+        optionNumber = "lottie.json",
         options = "Delhi",
         selected = false,
         onOptionClick = {},
