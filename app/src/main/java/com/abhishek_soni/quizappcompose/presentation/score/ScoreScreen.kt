@@ -139,7 +139,12 @@ fun ScoreScreen(
                 Text(text = "Quiz Completed Success. ", color = Color.Black, fontSize = Dimens.SmallTextSize,
                     style = MaterialTheme.typography.titleMedium,fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center)
+                Spacer(modifier = Modifier.height(Dimens.MediumSpaceHeight))
+                Text(text = annotatedString, color = Color.Black, fontSize = Dimens.SmallTextSize,
+                    style = MaterialTheme.typography.titleMedium,fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center)
                 Spacer(modifier = Modifier.height(Dimens.LargeSpaceHeight))
+
                 Row (
                     verticalAlignment = Alignment.CenterVertically
                 ){
@@ -147,17 +152,17 @@ fun ScoreScreen(
                         style = MaterialTheme.typography.titleMedium,fontWeight = FontWeight.Bold)
                     Spacer(modifier = Modifier.width(Dimens.SmallSpaceHeight))
                     Icon(
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(30.dp), tint = Color.Blue,
                         painter = painterResource(id = R.drawable.facebook), contentDescription = null
                     )
                     Spacer(modifier = Modifier.width(Dimens.SmallSpaceHeight))
                     Icon(
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(30.dp), tint = Color.Red,
                         painter = painterResource(id = R.drawable.instagram), contentDescription = null
                     )
                     Spacer(modifier = Modifier.width(Dimens.SmallSpaceHeight))
                     Icon(
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(30.dp),tint = colorResource(id = R.color.green),
                         painter = painterResource(id = R.drawable.whatsapp), contentDescription = null
                     )
 

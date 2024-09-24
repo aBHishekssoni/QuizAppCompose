@@ -39,11 +39,11 @@ private fun ButtonBoxPreview() {
 }
 
 @Composable
-fun ButtonBox(modifier: Modifier = Modifier,
+fun ButtonBox(
               text: String,
               padding: Dp,
+              containerColor: Color = colorResource(id = R.color.blue_grey),
               borderColor: Color = colorResource(id = R.color.blue_grey),
-              containerColor: Color = colorResource(id = R.color.mid_night_blue),
               textColor: Color = colorResource(id = R.color.black),
               fontSize: TextUnit = MediumTextSize,
               fraction: Float = 1f,
@@ -57,7 +57,8 @@ fun ButtonBox(modifier: Modifier = Modifier,
             .clickable { onClick() }
             .height(Dimens.MidiumBoxHeight)
             .clip(RoundedCornerShape(Dimens.LargeCornerRadius))
-            .background(colorResource(id = R.color.blue_grey)),
+            .background(containerColor),
+
 
         contentAlignment = Alignment.Center
     ){

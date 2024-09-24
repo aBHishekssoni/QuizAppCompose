@@ -169,6 +169,7 @@ fun QuizScreen(modifier: Modifier = Modifier,
                   scope.launch { pagerState.animateScrollToPage(pagerState.currentPage - 1) }
                 }  }else{
                     ButtonBox(
+//                modifier = Modifier.background(colorResource(id = R.color.mid_night_blue)),
                     text = "",
                         padding = 0.dp,
                     fraction = 0.43f,
@@ -176,8 +177,7 @@ fun QuizScreen(modifier: Modifier = Modifier,
                         borderColor = colorResource(id = R.color.mid_night_blue),
                         containerColor = colorResource(id = R.color.mid_night_blue),
 
-                    ){
-                }
+                    ){}
 
                 }
 
@@ -186,8 +186,8 @@ fun QuizScreen(modifier: Modifier = Modifier,
                     padding = Dimens.SmallPadding,
                     borderColor = colorResource(id = R.color.orange),
                     containerColor = if (pagerState.currentPage==state.quizState.size -1){colorResource(id = R.color.orange)}else {colorResource(id = R.color.dark_slate_blue)},
-                    fraction = 1f,
-                    textColor = colorResource(id = R.color.white),
+                      fraction = 1f,
+                    textColor = colorResource(id = R.color.black),
                     fontSize = Dimens.SmallTextSize,
 
                     ) {
@@ -195,7 +195,7 @@ fun QuizScreen(modifier: Modifier = Modifier,
                         ///todo
                         navController.navigate(Routes.ScoreScreen.passNunOfQuestionsAndCorrectAns(state.quizState.size,state.score))
                     }else{
-                        scope.launch { pagerState.animateScrollToPage(pagerState.currentPage - 1) }
+                        scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
                     }
                 }
             }
